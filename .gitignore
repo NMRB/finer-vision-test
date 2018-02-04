@@ -1,0 +1,15 @@
+*.log
+
+Mysql/
+MysqlHome/
+
+.idea
+public_html/.idea
+public_html/composer.lock
+
+
+/.htaccess
+/license.txt
+/readme.html
+/sitemap.xml
+/sitemap.xml.gz
