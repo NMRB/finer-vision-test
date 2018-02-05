@@ -1,10 +1,16 @@
 (function($) {
 
-  var allPanels = $('.accordion > dd').hide();
+  var allPanels = $('.collapse-body');
 
-  $('.accordion > dt > a').click(function() {
-    allPanels.slideUp();
-    $(this).parent().next().slideDown();
+  $('.collapse-toggle').on('click', function() {
+    allPanels.removeClass('open');
+    $(this).closest('.collapse').find('.collapse-body').addClass('open');
+    return false;
+  });
+
+  $('.collapse-next').on('click', function() {
+    allPanels.removeClass('open');
+    $(this).closest('.collapse').next().find('.collapse-body').addClass('open');
     return false;
   });
 

@@ -1,41 +1,67 @@
-body{background-color: grey;}
-
-.accordion {
-  margin: 50px;
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.accordion{
-   dt, dd {
-    padding: 10px;
-    border: 1px solid black;
-    border-bottom: 0;
+body{
+  background-color: #d2e1ff;
+  font-family: Arial;
+  .accordion{
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0px 0px 11px #111111;
+    .collapse{
+      background-color: #e0e0e0;
+      border-radius: 15px;
+      margin-bottom: 5px;
+      padding: 0px;
+      position: relative;
+      &:last-child{
+        margin-bottom: 0px;
+      }
+      &:after, &:before {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      .collapse-toggle{
+        padding: 15px;
+        border-radius: 15px;
+        background: linear-gradient(to bottom, #fec500, #eea20d);
+      }
+      .collapse-body{
+        border-top: 0;
+        font-size: 12px;
+        padding: 15px;
+        display: none;
+        width: 100%;
+        position: relative;
+        &.open{display: block;}
+        label{
+          display: inline-block;
+          input{
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #fff;
+            display: block;
+            margin-top: 5px;
+            margin-right: 10px;
+          }
+        }
+      }
+      .collapse-footer{
+        text-align: right;
+        padding-top:10px;
+        button{
+          background: linear-gradient(to bottom, #1111b1, #7c3cd6);
+          padding: 10px 40px;
+          text-align: center;
+          border: none;
+          border-radius: 10px;
+          color: #fff;
+        }
+      }
+    }
   }
-}
-.accordion dt:last-of-type, .accordion dd:last-of-type {
-  border-bottom: 1px solid black;
-}
-.accordion dt a, .accordion dd a {
-  display: block;
-  color: black;
-  font-weight: bold;
-}
-
-
-.accordion dd {
-  border-top: 0;
-  font-size: 12px;
-}
-.accordion dd:last-of-type {
-
-  border-top: 1px solid white;
-  position: relative;
-  top: -1px;
-}
-
-
-a {
-  text-decoration: none;
-}
-
-body {
-  font: 16px Sans-Serif;
 }

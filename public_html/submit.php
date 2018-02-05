@@ -1,4 +1,5 @@
-<!--
+<?php
+
 // This function will run within each post array including multi-dimensional arrays
 function ExtendedAddslash(&$params)
 {
@@ -15,16 +16,18 @@ ExtendedAddslash($_POST);
 $submission_id = $_POST['submission_id'];
 $formID = $_POST['formID'];
 $ip = $_POST['ip'];
-$name = $_POST['name'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
 $email = $_POST['email'];
-$phonenumber = $_POST['phonenumber13'][0] ."-". $_POST['phonenumber13'][1];
-$subject = $_POST['subject7'];
-$message = $_POST['message6'];
+$tel = $_POST['tel'];
+$gender = $_POST['gender'];
+$dateOfBirth = $_POST['dateOfBirth'];
+$commets = $_POST['commets'];
 
-$db_host = 'db hostname here';
-$db_username = 'db username here';
-$db_password = 'db password here';
-$db_name = 'name of your database';
+$db_host = 'db';
+$db_username = 'silver';
+$db_password = 'password';
+$db_name = 'my_db';
 
 mysql_connect( $db_host, $db_username, $db_password) or die(mysql_error());
 mysql_select_db($db_name);
@@ -55,12 +58,3 @@ if ($resultcount > 0) {
     or die(mysql_error());
 
 }
-?> -->
-
-
-
-<!-- //Connecting to sql db.
-$connect = mysqli_connect("my host","my user","my passwrod","my db");
-//Sending form data to sql db.
-mysqli_query($connect,"INSERT INTO posts (category, title, contents, tags)
-VALUES ('$_POST[post_category]', '$_POST[post_title]', '$_POST[post_contents]', '$_POST[post_tags]')"; -->

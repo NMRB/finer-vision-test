@@ -8,44 +8,53 @@
   <body>
     <form class="" action="submit.php" method="post">
       <div class="accordion">
-
-        <dt><a href=""><h1>first section</h1></a></dt>
-        <dd>
-          <div class="collapse-area open">
+        <div class="collapse ">
+          <div class="collapse-toggle">Step 1: Your details</div>
+          <div class="collapse-body open">
             <label for="firstname">
+              First Name
               <input type="text" name="firstname" value="">
             </label>
             <label for="lastname">
+              Surname
               <input type="text" name="lastname" value="">
             </label>
             <label for="email">
+              Email Address:
               <input type="email" name="email" value="">
             </label>
+            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Next ></button></div>
           </div>
-        </dd>
-        <dt><a href=""><h1>second section</h1></a></dt>
-        <dd>
-          <div class="collapse-area">
+        </div>
+        <div class="collapse">
+          <div class="collapse-toggle">Step 2: More comments</div>
+          <div class="collapse-body">
             <label for="tel">
+              Telephone
               <input type="tel" name="tel" value="">
             </label>
+            Sex
             <select class="gender" name="gender">
               <option value="gender">select</option>
               <option value="male">male</option>
               <option value="female">female</option>
             </select>
             <label for="dateOfBirth">
+              DOB
               <input type="date" name="dateOfBirth" value="">
             </label>
+            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Next ></button></div>
           </div>
-        </dd>
-        <dt><a href=""><h1>thrid section</h1></a></dt>
-        <dd>
-          <div class="collapse-area ">
-            <textarea name="comments" rows="8" cols="80"></textarea>
-          <input type="submit" name="" value="">
         </div>
-        </dd>
+        <div class="collapse">
+          <div class="collapse-toggle">Step 3: Final comments</div>
+          <div class="collapse-body">
+              Comments
+              <textarea name="comments" rows="8" cols="80"></textarea>
+            <input type="submit" name="" valu="">
+            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Submit ></button></div>
+          </div>
+        </div>
       </div>
     </form>
 
