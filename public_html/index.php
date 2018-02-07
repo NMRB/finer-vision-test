@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Finer Vidion Test</title>
+    <title>Finer Vision Test</title>
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
   </head>
   <body>
@@ -21,9 +21,9 @@
             </label>
             <label for="email">
               Email Address:
-              <input type="email" name="email" value="">
+              <input type="text" name="email" value="">
             </label>
-            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Next ></button></div>
+            <div class="collapse-footer"><button class="collapse-next" type="button">Next ></button></div>
           </div>
         </div>
         <div class="collapse">
@@ -43,7 +43,7 @@
               DOB
               <input type="date" name="dateOfBirth" value="">
             </label>
-            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Next ></button></div>
+            <div class="collapse-footer"><button class="collapse-next" type="button" >Next ></button></div>
           </div>
         </div>
         <div class="collapse">
@@ -51,8 +51,9 @@
           <div class="collapse-body">
               Comments
               <textarea name="comments" rows="8" cols="80"></textarea>
-            <input type="submit" name="" valu="">
-            <div class="collapse-footer"><button class="collapse-next" type="button" name="button">Submit ></button></div>
+            <input type="submit" >
+              
+            <div class="collapse-footer"><button class="collapse-next" type="button" >Submit ></button></div>
           </div>
         </div>
       </div>

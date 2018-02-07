@@ -1,5 +1,7 @@
 <?php
 
+
+
 // This function will run within each post array including multi-dimensional arrays
 function ExtendedAddslash(&$params)
 {
@@ -13,48 +15,89 @@ function ExtendedAddslash(&$params)
 // Initialize ExtendedAddslash() function for every $_POST variable
 ExtendedAddslash($_POST);
 
-$submission_id = $_POST['submission_id'];
-$formID = $_POST['formID'];
-$ip = $_POST['ip'];
+
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $tel = $_POST['tel'];
 $gender = $_POST['gender'];
 $dateOfBirth = $_POST['dateOfBirth'];
-$commets = $_POST['commets'];
+$comments = $_POST['comments'];
 
 $db_host = 'db';
 $db_username = 'silver';
 $db_password = 'password';
 $db_name = 'my_db';
 
-mysql_connect( $db_host, $db_username, $db_password) or die(mysql_error());
-mysql_select_db($db_name);
 
-// search submission ID
+$table = "table_name";
+$con = mysqli_connect( $db_host, $db_username, $db_password) or die(mysql_error());
 
-$query = "SELECT * FROM `table_name` WHERE `submission_id` = '$submission_id'";
-$sqlsearch = mysql_query($query);
-$resultcount = mysql_numrows($sqlsearch);
+
+$create_db = "CREATE DATABASE IF NOT EXISTS $db_name";
+
+mysqli_query($con ,$create_db);
+mysqli_select_db($con ,$db_name);
+
+
+$query = "SELECT ID FROM " . $table; // that should be id and not ID
+//$result = mysql_query($mysql_connexn, $query); // your original code
+// however connection comes last in mysql method, unlike mysqli
+$result = mysqli_query($con , $query);
+
+if(empty($result)) {
+    echo "<p>" . $table . " table does not exist</p>";
+    $query = mysqli_query($con,"CREATE TABLE IF NOT EXISTS $table (
+        id INT NOT NULL AUTO_INCREMENT,
+        PRIMARY KEY(id),
+        firstname VARCHAR(255) NOT NULL,
+        lastname VARCHAR(255) NOT NULL,
+        email  VARCHAR(255) NOT NULL,
+        phone  VARCHAR(255) NOT NULL,
+        gender VARCHAR(255) NOT NULL,
+        dateofbirth  DATE NOT NULL,
+        message  VARCHAR(255) NOT NULL   
+    )");
+}
+else {
+    echo "<p>" . $table . "table exists</p>";
+} // else
+
+
+$resultcount = mysqli_num_rows($result);
 
 if ($resultcount > 0) {
-
-    mysql_query("UPDATE `table_name` SET
-                                `name` = '$name',
+  
+    mysqli_query($con ,"INSERT `$table` SET
+                                `firstname` = '$firstname',
+                                `lastname` = '$lastname',
                                 `email` = '$email',
-                                `phone` = '$phonenumber',
-                                `subject` = '$subject',
-                                `message` = '$message'
-                             WHERE `submission_id` = '$submission_id'")
-     or die(mysql_error());
+                                `phone` = '$tel',
+                                `gender` = '$gender',
+                                `dateofbirth` = '$dateOfBirth',
+                                `message` = '$comments'                                
+                             ")
+     or die(mysqli_error($con ));
 
 } else {
 
-    mysql_query("INSERT INTO `table_name` (submission_id, formID, IP,
-                                                                          name, email, phone, subject, message)
-                               VALUES ('$submission_id', '$formID', '$ip',
-                                                 '$name', '$email', '$phonenumber', '$subject', '$message') ")
-    or die(mysql_error());
+mysqli_query(
+    $con ,
+    "INSERT INTO `$table` ( 
+       id, firstname ,lastname, email, phone, gender, dateofbirth, message  
+    )
+    VALUES (
+       null, 
+        '$firstname',
+        '$lastname',
+        '$email',
+        '$tel',
+        '$gender',
+        '$dateOfBirth',
+        '$comments'   
+    ) 
+    "
+)
+or die(mysqli_error($con));
 
 }
